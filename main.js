@@ -1,9 +1,19 @@
-import { movieListSlice} from "./src/features/movielist.slice.js";
+import { movieListSlice as movieDataManager} from "./src/features/movielist.slice.js";
 
-movieListSlice().methods.addmovie({id: 100,
+const {data:{movieList }, methods: {pushMovie,getMovies,resetMovies}} = movieDataManager();
+
+pushMovie({id: 100,
     name: "Leo",
     mainActor: "Vijay"});
 
-movieListSlice().methods.getmovie();
-    
-console.log(movieListSlice().data.movieList);    
+    getMovies().movieList;
+console.log("Local Movie List");    
+console.log(movieList);    
+console.log("Resetting Closure Movie List");
+resetMovies();
+
+console.log("Local Movie List");
+console.log(movieList);    
+console.log("Closure Movie List");
+console.log(getMovies().movieList);
+
